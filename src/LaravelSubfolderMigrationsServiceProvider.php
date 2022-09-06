@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Yusufalper\LaravelSubfolderMigrations;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use Yusufalper\LaravelSubfolderMigrations\Commands\LaravelSubfolderMigrationsCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelSubfolderMigrationsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-subfolder-migrations')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel-subfolder-migrations_table')
+            ->hasCommand(LaravelSubfolderMigrationsCommand::class);
     }
 }
