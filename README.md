@@ -61,6 +61,15 @@ And you are good to go! You can run your migration commands as just like before.
 php artisan migrate
 ```
 
+Note:
+
+If you don't have auto discovery enabled, you should add the following to config/app.php "providers" array:
+
+```
+Yusufalper\LaravelSubfolderMigrations\LaravelSubfolderMigrationsServiceProvider::class,
+
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
