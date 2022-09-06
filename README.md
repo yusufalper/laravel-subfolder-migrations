@@ -1,22 +1,50 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # Organize your migrations into subfolders.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/yusufalper/laravel-subfolder-migrations.svg?style=flat-square)](https://packagist.org/packages/yusufalper/laravel-subfolder-migrations)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/yusufalper/laravel-subfolder-migrations/run-tests?label=tests)](https://github.com/yusufalper/laravel-subfolder-migrations/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/yusufalper/laravel-subfolder-migrations/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/yusufalper/laravel-subfolder-migrations/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/yusufalper/laravel-subfolder-migrations.svg?style=flat-square)](https://packagist.org/packages/yusufalper/laravel-subfolder-migrations)
+This package allows you to split database/migrations into subfolders. Especially in large projects, migrations folder may cause headaches. 
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Now you can turn this:
 
-## Support us
+- database
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-subfolder-migrations.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-subfolder-migrations)
+- - migrations
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+- - - 2019_08_19_000000_create_users_table.php
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+- - - 2019_08_19_000000_create_user_xs_table.php
+
+- - - 2019_08_19_000000_create_user_ys_table.php
+
+- - - 2019_08_19_000000_create_companies_table.php
+
+- - - 2019_08_19_000000_create_company_zs_table.php
+
+- - - 2019_08_19_000000_create_company_ts_table.php
+
+
+into this:
+
+- database
+
+- - migrations
+
+- - - company_migrations
+
+- - - - 2019_08_19_000003_create_companies_table.php
+
+- - - - 2019_08_19_000004_create_company_zs_table.php
+
+- - - - 2019_08_19_000005_create_company_ts_table.php
+
+- - - user_migrations
+
+- - - - 2019_08_19_000000_create_users_table.php
+
+- - - - 2019_08_19_000001_create_user_xs_table.php
+
+- - - - 2019_08_19_000002_create_user_ys_table.php
+
+
+Directory order is not important, the only important thing is naming migration files as before. Package will scan all migration folder with all subfolders and will do the migrations in order. In the example above, the first file to run will be "2019_08_19_000000_create_users_table.php".
 
 ## Installation
 
@@ -26,61 +54,20 @@ You can install the package via composer:
 composer require yusufalper/laravel-subfolder-migrations
 ```
 
-You can publish and run the migrations with:
+And you are good to go! You can run your migration commands as just like before. For example:
 
-```bash
-php artisan vendor:publish --tag="laravel-subfolder-migrations-migrations"
+
+```
 php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-subfolder-migrations-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-subfolder-migrations-views"
-```
-
-## Usage
-
-```php
-$laravelSubfolderMigrations = new Yusufalper\LaravelSubfolderMigrations();
-echo $laravelSubfolderMigrations->echoPhrase('Hello, Yusufalper!');
-```
-
-## Testing
-
-```bash
-composer test
 ```
 
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
 ## Credits
 
 - [Yusuf Alper Sarı](https://github.com/yusufalper)
-- [All Contributors](../../contributors)
 
 ## License
 
