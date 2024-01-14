@@ -1,5 +1,7 @@
 # Organize your migrations into subfolders.
 
+IF YOU DO NOT WANT TO USE PACKAGE FOR THIS FEATURE, YOU CAN USE SIMPLE PROVIDER GIST FROM [HERE](https://gist.github.com/yusufalper/25c0c7e5a347abc09349bbc16817c268)
+
 This package allows you to split database/migrations into subfolders. Especially in large projects, migrations folder may cause headaches. 
 
 Now you can turn this:
